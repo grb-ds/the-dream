@@ -17,13 +17,13 @@ $destination = $exchangeCurrency = "";
 $localValue = $exchangeRate = $exchangeValue = 0.0;
 
 if (isset($_POST['submit'])) {
-    if (empty($_POST["destination"])) {
+/*    if (empty($_POST["destination"])) {
         $destinationError = "Destination is required";
     } elseif (!array_key_exists($_POST["destination"],$destinationsArray)) {
         $destinationError = "Destination is not found.";
     } else {
         $destination = $_POST["destination"];
-    }
+    }*/
 
     if (empty($_POST["localValue"])) {
         $localValueError = "Local Value is required";
@@ -31,8 +31,10 @@ if (isset($_POST['submit'])) {
         $localValue = $_POST["localValue"];
     }
 
+    $exchangeCurrency = $_POST["exchangeCurrency"];
+
     if ($destinationError === "" && $localValueError === ""){
-        $exchangeCurrency = $destinationsArray[$destination];
+       // $exchangeCurrency = $destinationsArray[$destination];
         $exchangeRate = $exchangeRateArray[$exchangeCurrency];
         $exchangeValue = getExchangeValue($localValue,$exchangeRate);
     }
@@ -52,8 +54,13 @@ function getExchangeValue($value, $rate) {
 <form method="post" action="">
 
     <label for="destination" class="destination">Destination</label>
-    <input id="destination" type="text" name="destination" value =<?php echo $destination;?> >
-    <span class="error">* <?php echo $destinationError;?></span>
+   <!-- <input id="destination" type="text" name="destination" value =<?php /*echo $destination;*/?> >-->
+    <!--<span class="error">* <?php /*echo $destinationError;*/?></span>-->
+    <select name = "exchangeCurrency">
+        <?php foreach($destinationsArray as $key => $value) { ?>
+            <option value="<?php echo $value ?>"><?php echo $key ?></option>
+        <?php }?>
+    </select>
 
     <label for="localCurrency" class="local-currency">Local currency</label>
     <input id="localCurrency" type="text" value="EUR" disabled>

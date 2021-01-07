@@ -12,7 +12,8 @@ form {
     margin-right: auto;
     padding: 1em;
 }
-form input {
+form input,
+form select {
     margin-bottom: 1rem;
     background: #fff;
     border: 1px solid #9c9c9c;
@@ -32,12 +33,14 @@ label {
     padding: 0.5em 1.5em 0.5em 0;
 }
 
-input {
+input,
+select {
     width: 100%;
     padding: 0.7em;
     margin-bottom: 0.5rem;
 }
-input:focus {
+input:focus,
+select:focus{
     outline: 3px solid gold;
 }
 
@@ -51,7 +54,7 @@ input:focus {
         width: 200px;
     }
 
-    input {
+    input, select {
         float: left;
         width: calc(100% - 200px);
     }
@@ -66,11 +69,12 @@ label {
     padding: 0.5em 0.5em 0.5em 0;
 }
 
-input {
+input, select {
     padding: 0.7em;
     margin-bottom: 0.5rem;
 }
-input:focus {
+input:focus,
+select:focus{
     outline: 3px solid gold;
 }
 .error {color: #FF0000;}
@@ -86,7 +90,7 @@ input:focus {
         grid-column: 1 / 2;
     }
 
-    input,
+    input, select,
     .button {
         grid-column: 2 / 3;
     }
